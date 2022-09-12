@@ -14,7 +14,8 @@ module.exports = {
 			style: path.resolve(__dirname, 'src/style/'),
 			components: path.resolve(__dirname, 'src/components/'),
 			helpers: path.resolve(__dirname, 'src/helpers/'),
-			favicons: path.resolve(__dirname, 'src/assets/images/favicons')
+			favicons: path.resolve(__dirname, 'src/assets/images/favicons'),
+			pages: path.resolve(__dirname, 'src/pages')
 			// api: path.resolve(__dirname, 'src/api/'),
 		}
 	},
