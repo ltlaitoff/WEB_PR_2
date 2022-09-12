@@ -1,13 +1,10 @@
 import LogoIcon from 'favicons/logo.svg'
-import { createElement } from 'helpers/createElement'
+import { createElement, htmlStringToElement } from 'helpers'
 import './Logo.scss'
 
 const Logo = () => {
-	const icon = createElement('img', {
-		className: 'logo--image',
-		src: LogoIcon,
-		alt: 'logo'
-	})
+	const icon = htmlStringToElement(LogoIcon)
+	icon.classList.add('logo--image')
 
 	const title = createElement('h1', {
 		className: 'logo--text',

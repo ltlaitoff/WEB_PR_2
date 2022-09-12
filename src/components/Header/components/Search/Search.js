@@ -1,13 +1,10 @@
 import HomeIcon from 'favicons/home.svg'
-import { createElement } from 'helpers/createElement'
+import { createElement, htmlStringToElement } from 'helpers'
 import './Search.scss'
 
 const Search = () => {
-	const icon = createElement('img', {
-		className: 'search--icon',
-		src: HomeIcon,
-		alt: 'home icon'
-	})
+	const icon = htmlStringToElement(HomeIcon)
+	icon.classList.add('search--icon')
 
 	const input = createElement('input', {
 		className: 'search--input',

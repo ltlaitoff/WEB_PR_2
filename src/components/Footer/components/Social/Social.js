@@ -1,14 +1,11 @@
-import { createElement } from 'helpers/createElement'
+import { createElement } from 'helpers'
 import './Social.scss'
 import { socialData } from './data'
 
 const Social = () => {
 	const listItems = socialData.map(info => {
-		const img = createElement('img', {
-			className: 'social--item-icon',
-			src: info.src,
-			alt: info.alt
-		})
+		const img = info.icon
+		img.classList.add('social--item-icon')
 
 		const link = createElement('a', {
 			className: 'social--item-link',

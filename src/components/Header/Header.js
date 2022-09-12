@@ -4,21 +4,21 @@ import Logo from 'components/Logo'
 import Search from './components/Search'
 import ButtonWithIconAndText from './components/ButtonWithIconAndText'
 
-import { createElement } from 'helpers/createElement'
+import { createElement } from 'helpers'
 import './Header.scss'
 
 const Header = () => {
 	const signInButton = ButtonWithIconAndText({
 		buttonClass: 'header--button header--button-signin',
-		iconClass: 'header--button-icon header--button-signin-icon',
-		iconSrc: SingInIcon,
+		iconClasses: ['header--button-icon', 'header--button-signin-icon'],
+		icon: SingInIcon,
 		text: 'Війти'
 	})
 
 	const shoppingCartButton = ButtonWithIconAndText({
 		buttonClass: 'header--button header--button-shopping-cart',
-		iconClass: 'header--button-icon header--button-shopping-cart-icon',
-		iconSrc: ShoppingCartIcon,
+		iconClasses: ['header--button-icon', 'header--button-shopping-cart-icon'],
+		icon: ShoppingCartIcon,
 		text: 'Корзина'
 	})
 

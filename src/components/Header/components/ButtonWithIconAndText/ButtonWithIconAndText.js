@@ -1,18 +1,14 @@
-import { createElement } from 'helpers/createElement'
+import { createElement, htmlStringToElement } from 'helpers'
 
 const ButtonWithIconAndText = ({
 	buttonClass,
-	iconClass,
-	iconSrc,
-	iconAlt = '',
+	icon,
+	iconClasses,
 	text,
 	textClass = ''
 }) => {
-	const icon = createElement('img', {
-		className: iconClass,
-		alt: iconAlt,
-		src: iconSrc
-	})
+	const iconElement = htmlStringToElement(icon)
+	iconElement.classList.add(...iconClasses)
 
 	const textElement = createElement('div', {
 		textContent: text,
@@ -21,7 +17,7 @@ const ButtonWithIconAndText = ({
 
 	const button = createElement('button', {
 		className: buttonClass,
-		childs: [icon, textElement]
+		childs: [iconElement, textElement]
 	})
 
 	return button

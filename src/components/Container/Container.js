@@ -1,4 +1,4 @@
-import { createElement } from 'helpers/createElement'
+import { createElement } from 'helpers'
 import './Container.scss'
 
 const Container = ({ childs }) => {
