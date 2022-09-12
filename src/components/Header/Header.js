@@ -2,7 +2,7 @@ import SingInIcon from '../../assets/images/favicons/user.svg'
 import ShoppingCartIcon from '../../assets/images/favicons/shopping-cart.svg'
 import Logo from '../Logo'
 import Search from './components/Search'
-import ButtonWithIconAndText from '../ButtonWithIconAndText'
+import ButtonWithIconAndText from './components/ButtonWithIconAndText'
 
 import { createElement } from '../../helpers/createElement'
 import './Header.scss'

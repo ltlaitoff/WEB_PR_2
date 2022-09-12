@@ -1,4 +1,4 @@
-import { createElement } from '../../helpers/createElement'
+import { createElement } from '../../../../helpers/createElement'
 
 const ButtonWithIconAndText = ({
 	buttonClass,
@@ -10,6 +10,7 @@ const ButtonWithIconAndText = ({
 }) => {
 	const icon = createElement('img', {
 		className: iconClass,
+		alt: iconAlt,
 		src: iconSrc
 	})
 
