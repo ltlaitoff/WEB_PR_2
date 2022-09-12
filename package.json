@@ -4,8 +4,8 @@
 	"description": "pr_2_1",
 	"private": true,
 	"scripts": {
-		"build": "webpack",
-		"start": "webpack serve --open",
+		"build": "webpack --mode=production",
+		"start": "webpack serve --open --mode=development",
 		"test": "test"
 	},
 	"author": "ltlaitoff",
