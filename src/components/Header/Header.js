@@ -1,10 +1,10 @@
-import SingInIcon from '../../assets/images/favicons/user.svg'
-import ShoppingCartIcon from '../../assets/images/favicons/shopping-cart.svg'
-import Logo from '../Logo'
+import SingInIcon from 'favicons/user.svg'
+import ShoppingCartIcon from 'favicons/shopping-cart.svg'
+import Logo from 'components/Logo'
 import Search from './components/Search'
 import ButtonWithIconAndText from './components/ButtonWithIconAndText'
 
-import { createElement } from '../../helpers/createElement'
+import { createElement } from 'helpers/createElement'
 import './Header.scss'
 
 const Header = () => {

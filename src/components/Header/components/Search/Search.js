@@ -1,5 +1,5 @@
-import HomeIcon from '../../../../assets/images/favicons/home.svg'
-import { createElement } from '../../../../helpers/createElement'
+import HomeIcon from 'favicons/home.svg'
+import { createElement } from 'helpers/createElement'
 import './Search.scss'
 
 const Search = () => {

@@ -9,6 +9,17 @@ module.exports = {
 		path: path.resolve(__dirname, 'build'),
 		clean: true
 	},
+	resolve: {
+		alias: {
+			assets: path.resolve(__dirname, 'src/assets/'),
+			style: path.resolve(__dirname, 'src/style/'),
+			components: path.resolve(__dirname, 'src/components/'),
+			helpers: path.resolve(__dirname, 'src/helpers/'),
+			favicons: path.resolve(__dirname, 'src/assets/images/favicons')
+			// api: path.resolve(__dirname, 'src/api/'),
+		}
+	},
+
 	module: {
 		rules: [
 			{

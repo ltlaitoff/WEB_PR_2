@@ -1,5 +1,5 @@
-import LogoIcon from '../../assets/images/favicons/logo.svg'
-import { createElement } from '../../helpers/createElement'
+import LogoIcon from 'favicons/logo.svg'
+import { createElement } from 'helpers/createElement'
 import './Logo.scss'
 
 const Logo = () => {
