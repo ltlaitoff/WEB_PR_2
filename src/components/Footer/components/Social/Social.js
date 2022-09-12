@@ -1,4 +1,4 @@
-import { createElement } from '../../helpers/createElement'
+import { createElement } from '../../../../helpers/createElement'
 import './Social.scss'
 import { socialData } from './data'
 

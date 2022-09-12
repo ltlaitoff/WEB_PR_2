@@ -2,7 +2,7 @@ import { createElement } from '../../helpers/createElement'
 import FooterMenu from './components/FooterMenu'
 import Logo from '../Logo'
 import menuInfo from './data/menuInfo'
-import Social from '../Social'
+import Social from './components/Social'
 
 import './Footer.scss'
 

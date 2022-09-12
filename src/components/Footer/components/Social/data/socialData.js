@@ -1,6 +1,6 @@
-import InstagramIcon from '../../../assets/images/favicons/instagram.svg'
-import TelegramIcon from '../../../assets/images/favicons/telegram.svg'
-import FacebookIcon from '../../../assets/images/favicons/facebook.svg'
+import InstagramIcon from '../../../../../assets/images/favicons/instagram.svg'
+import TelegramIcon from '../../../../../assets/images/favicons/telegram.svg'
+import FacebookIcon from '../../../../../assets/images/favicons/facebook.svg'
 
 export default [
 	{
