@@ -10,7 +10,9 @@
 
 	--color-header-cart-button-hover: var(--color-gray-6);
 
-	padding: 44px 0 40px 0;
+	@include mixins.container;
+
+	padding: 44px 0 23px 0;
 
 	display: flex;
 	justify-content: space-between;

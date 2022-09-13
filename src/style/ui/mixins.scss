@@ -1,5 +1,10 @@
 @use './variables.scss';
 
+@mixin container {
+	max-width: var(--max-width);
+	margin: 0 auto;
+}
+
 @mixin text-style-roboto-regular-15-px-20-px {
 	font-size: 15px;
 	font-family: 'Roboto';

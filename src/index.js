@@ -1,10 +1,17 @@
 import Header from 'components/Header'
 import Footer from 'components/Footer'
-import Container from 'components/Container'
 import Home from 'pages/Home'
+import { createElement } from 'helpers'
 
 import './style/style.scss'
 
 const app = document.querySelector('#app')
 
-app.append(Container({ childs: [Header(), Home(), Footer()] }))
+const main = createElement('main', {
+	className: 'main',
+	child: Home()
+})
+
+app.append(Header())
+app.append(main)
+app.append(Footer())
