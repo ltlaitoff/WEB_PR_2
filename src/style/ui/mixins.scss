@@ -20,6 +20,36 @@
 	text-transform: none;
 }
 
+@mixin text-style-roboto-bold-36-px-42-px {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 36px;
+	line-height: 42px;
+	text-decoration: none;
+	text-transform: none;
+}
+
+@mixin text-style-roboto-bold-24-px-32-px {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 32px;
+	text-decoration: none;
+	text-transform: none;
+}
+
+@mixin text-style-roboto-bold-18-px-32-px {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 32px;
+	text-decoration: none;
+	text-transform: none;
+}
+
 @mixin text-style-regular-12-px-20-px {
 	font-size: 12px;
 	font-family: 'SF Pro Display';
