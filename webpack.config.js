@@ -6,8 +6,7 @@ module.exports = {
 	output: {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'build'),
-		clean: true,
-		publicPath: './'
+		clean: true
 	},
 	resolve: {
 		alias: {
@@ -44,7 +43,6 @@ module.exports = {
 		})
 	],
 	devServer: {
-		static: './build',
-		historyApiFallback: true
+		static: './build'
 	}
 }
