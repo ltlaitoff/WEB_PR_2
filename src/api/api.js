@@ -5,8 +5,8 @@ const getRestaurants = () => {
 	return loadAPIImagesRestaurants(DATA.restaurants)
 }
 
-const getRestaurantDishes = () => {
-	return DATA.CARDS_NOT_USE_IT_IN_PROD
+const getRestaurantDishes = id => {
+	return DATA.restaurantsDishes[id]
 }
 
 export { getRestaurantDishes, getRestaurants }
