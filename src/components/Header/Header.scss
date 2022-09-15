@@ -16,6 +16,15 @@
 
 	display: flex;
 	justify-content: space-between;
+	column-gap: 10px;
+
+	@media screen and (max-width: 850px) {
+		flex-wrap: wrap;
+		justify-content: center;
+		row-gap: 20px;
+		column-gap: 30px;
+		// align-items: center;
+	}
 
 	&--buttons {
 		height: 40px;

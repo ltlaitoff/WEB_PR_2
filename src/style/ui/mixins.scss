@@ -3,6 +3,11 @@
 @mixin container {
 	max-width: var(--max-width);
 	margin: 0 auto;
+
+	@media screen and (max-width: 1220px) {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
 }
 
 @mixin text-style-roboto-regular-15-px-20-px {
