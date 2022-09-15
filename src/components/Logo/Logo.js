@@ -1,6 +1,7 @@
 import LogoIcon from 'favicons/logo.svg'
 import { createElement, htmlStringToElement } from 'helpers'
 import './Logo.scss'
+import { route } from '../../router/router'
 
 const Logo = () => {
 	const icon = htmlStringToElement(LogoIcon)
@@ -16,6 +17,8 @@ const Logo = () => {
 		href: '#',
 		childs: [icon, title]
 	})
+
+	logo.onClick = () => route('/')
 
 	return logo
 }

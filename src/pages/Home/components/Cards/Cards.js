@@ -7,8 +7,8 @@ import { Card } from '..'
 import './Cards.scss'
 
 const Cards = () => {
+	const restaurants = [...getRestaurants()]
 	// TODO: Change it to import from async and rerender
-	const restaurants = getRestaurants()
 
 	const searchIcon = htmlStringToElement(Search)
 	searchIcon.classList.add('cards--filter-icon')
@@ -38,12 +38,13 @@ const Cards = () => {
 			}),
 			createElement('div', {
 				className: 'cards--wrapper',
-				childs: [
-					...restaurants.map(info => {
+				childs: restaurants.map(info => {
+					if (!info.image.includes('.jpg')) {
 						info.image = require(`assets/images/${info.image}.jpg`)
-						return Card(info)
-					})
-				]
+					}
+
+					return Card(info)
+				})
 			})
 		]
 	})

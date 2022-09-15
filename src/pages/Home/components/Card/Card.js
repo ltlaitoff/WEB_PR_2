@@ -2,6 +2,7 @@ import { createElement, htmlStringToElement } from 'helpers'
 import Star from 'assets/images/favicons/star.svg'
 
 import './Card.scss'
+import { route } from '../../../../router/router'
 
 const Card = ({ name, stars, image, minPrice, time, type }) => {
 	// TODO: Change cards to links
@@ -11,11 +12,17 @@ const Card = ({ name, stars, image, minPrice, time, type }) => {
 	const formattedPrice = `Від ${minPrice} ₴`
 	const formattedTime = `${time} хв.`
 
-	return createElement('div', {
+	const card = createElement('a', {
 		className: 'card',
+		onClick: () => {
+			console.log('click')
+		},
 		childs: [
 			createElement('div', {
 				className: 'card--image',
+				onClick: () => {
+					console.log('click')
+				},
 				style: `background-image: url(${image})`
 			}),
 			createElement('div', {
@@ -26,6 +33,9 @@ const Card = ({ name, stars, image, minPrice, time, type }) => {
 						childs: [
 							createElement('h3', {
 								className: 'card--title',
+								onClick: () => {
+									console.log('click')
+								},
 								textContent: name
 							}),
 							createElement('div', {
@@ -63,6 +73,10 @@ const Card = ({ name, stars, image, minPrice, time, type }) => {
 			})
 		]
 	})
+
+	card.addEventListener('click', () => route('/restaurant'))
+
+	return card
 }
 
 export default Card
