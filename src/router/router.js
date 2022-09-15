@@ -3,44 +3,71 @@ const RESTAURANT_PAGE = import(
 	/* webpackChunkName: "restaurantPage" */ 'pages/Restaurant'
 )
 
-const ROUTES = {
-	'/': HOME_PAGE,
-	'/restaurant': RESTAURANT_PAGE,
-	'*': 'ERROR_PAGE'
+const ERROR_PAGE = import(/* webpackChunkName: "ErrorPage" */ 'pages/ErrorPage')
+
+let CACHE_ROOT = null
+
+const ROUTES = [
+	{
+		path: '/',
+		template: HOME_PAGE
+	},
+	{
+		path: '/restaurant',
+		template: RESTAURANT_PAGE
+	},
+	{
+		path: '*',
+		template: ERROR_PAGE
+	}
+]
+
+const checkPathOnErrors = (path, error = true) => {
+	if (!getRoutesPathList().includes(path)) {
+		if (error) {
+			throw new Error('Undefined path')
+		}
+
+		return true
+	}
+
+	return false
 }
 
-export const route = path => {
-	console.log(window.location.hash)
+const getRoutesPathList = () => {
+	return ROUTES.map(route => route.path)
+}
+
+const getRoutesTemplageByPath = path => {
+	if (checkPathOnErrors(path, false)) {
+		path = '*'
+	}
+
+	return ROUTES.filter(route => {
+		if (route.path === path) return route
+	})[0].template
+}
+
+const route = path => {
+	checkPathOnErrors(path)
 
 	window.location.hash = path
-
-	console.log(window.location.hash)
 }
 
-let ROOT = document.createElement('template')
-
 function router(root) {
-	if (ROOT !== root) {
-		ROOT = root
+	if (CACHE_ROOT !== root) {
+		CACHE_ROOT = root
 	}
-
-	console.log(ROOT)
 
 	const hash = '/' + window.location.hash.replace('#/', '')
-
-	console.log(hash)
-	const page = ROUTES[hash] || 'ERROR_PAGE'
-
-	if (typeof page !== 'object') {
-		ROOT.replaceChildren('Page not found')
-		return
-	}
+	const page = getRoutesTemplageByPath(hash)
 
 	page.then(data => {
-		ROOT.replaceChildren(data.default())
+		root.replaceChildren(data.default())
 	})
 }
 
-window.onhashchange = () => router(ROOT)
+window.onhashchange = () => router(CACHE_ROOT)
+window.location.hash = ''
 
-export { router }
+export { route, router }
