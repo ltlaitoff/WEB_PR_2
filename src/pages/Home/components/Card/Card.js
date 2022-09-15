@@ -5,7 +5,6 @@ import './Card.scss'
 import { route } from '../../../../router/router'
 
 const Card = ({ name, stars, image, minPrice, time, type }) => {
-	// TODO: Change cards to links
 	const StarElement = htmlStringToElement(Star)
 	StarElement.classList.add('card--star')
 
