@@ -6,7 +6,9 @@
 	justify-content: space-between;
 	row-gap: 30px;
 
-	& > * {
-		flex-basis: 33%;
+	column-gap: 10px;
+
+	@media screen and (max-width: 1200px) {
+		justify-content: center;
 	}
 }
