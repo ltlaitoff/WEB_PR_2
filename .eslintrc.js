@@ -26,7 +26,8 @@ module.exports = {
 					['helpers', path.resolve(__dirname, 'src/helpers/')],
 					['favicons', path.resolve(__dirname, 'src/assets/images/favicons')],
 					['pages', path.resolve(__dirname, 'src/pages')],
-					['api', path.resolve(__dirname, 'src/api/')]
+					['api', path.resolve(__dirname, 'src/api/')],
+					['router', path.resolve(__dirname, 'src/router/')]
 				]
 			},
 			extensions: ['.js', '.less', '.json', '.vue']
