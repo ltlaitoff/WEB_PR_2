@@ -3,7 +3,7 @@
 		{
 			"id": 0,
 			"name": "Піца плюс",
-			"image": "restaurant-1",
+			"image": "restaurant-1.jpg",
 			"stars": "4.2",
 			"minPrice": "600",
 			"time": "55",
@@ -13,7 +13,7 @@
 			"id": 1,
 			"name": "Тануки",
 			"stars": "4.6",
-			"image": "restaurant-2",
+			"image": "restaurant-2.jpg",
 			"minPrice": "1000",
 			"time": "40",
 			"type": "Суші"
@@ -22,7 +22,7 @@
 			"id": 2,
 			"name": "Food band",
 			"stars": "4.3",
-			"image": "restaurant-3",
+			"image": "restaurant-3.jpg",
 			"minPrice": "750",
 			"time": "50",
 			"type": "Піца"
@@ -31,7 +31,7 @@
 			"id": 3,
 			"name": "Маяк",
 			"stars": "4.5",
-			"image": "restaurant-4",
+			"image": "restaurant-4.jpg",
 			"minPrice": "700",
 			"time": "45",
 			"type": "Молекулярка"
@@ -40,7 +40,7 @@
 			"id": 4,
 			"name": "Alaseel",
 			"stars": "4.4",
-			"image": "restaurant-5",
+			"image": "restaurant-5.jpg",
 			"minPrice": "860",
 			"time": "58",
 			"type": "Морепродукти"
@@ -49,7 +49,7 @@
 			"id": 5,
 			"name": "Майстер піца",
 			"stars": "4.2",
-			"image": "restaurant-6",
+			"image": "restaurant-6.jpg",
 			"minPrice": "760",
 			"time": "57",
 			"type": "Піца"
