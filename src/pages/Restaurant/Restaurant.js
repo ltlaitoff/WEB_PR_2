@@ -2,11 +2,14 @@ import { createElement } from 'helpers'
 import { RestaurantCards, RestaurantHeader } from './components'
 
 import './Restaurant.scss'
+import { route } from 'router'
 
-const Restaurant = () => {
-	const cards = RestaurantCards()
+const Restaurant = params => {
+	if (params.toString() === '') {
+		route('/')
+	}
 
-	console.log(cards)
+	const cards = RestaurantCards(params.get('id'))
 
 	return createElement('div', {
 		className: 'restaurant',

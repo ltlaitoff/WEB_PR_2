@@ -4,8 +4,8 @@ import { RestaurantCard } from '..'
 
 import './RestaurantCards.scss'
 
-const RestaurantCards = () => {
-	const cardsInfo = getRestaurantDishes()
+const RestaurantCards = id => {
+	const cardsInfo = getRestaurantDishes(id)
 
 	const data = cardsInfo.map(item => {
 		return { ...item, image: require(`assets/images/${item.image}.jpg`) }

@@ -39,6 +39,8 @@ const getRoutesPathList = () => {
 }
 
 const getRoutesTemplageByPath = path => {
+	path = path.split('&')[0]
+
 	if (checkPathOnErrors(path, false)) {
 		path = '*'
 	}
@@ -48,10 +50,20 @@ const getRoutesTemplageByPath = path => {
 	})[0].template
 }
 
-const route = path => {
+const route = (path, params = []) => {
 	checkPathOnErrors(path)
 
-	window.location.hash = path
+	console.log(params)
+
+	const searchParams = new URLSearchParams('')
+
+	params.forEach(item => {
+		const [key, value] = Object.entries(item)[0]
+
+		searchParams.append(key, value)
+	})
+
+	window.location.hash = path + '&' + searchParams.toString()
 }
 
 function router(root) {
@@ -62,8 +74,11 @@ function router(root) {
 	const hash = '/' + window.location.hash.replace('#/', '')
 	const page = getRoutesTemplageByPath(hash)
 
+	const paramsStr = hash.split('&')[1]
+	const searchParams = new URLSearchParams(paramsStr)
+
 	page.then(data => {
-		root.replaceChildren(data.default())
+		root.replaceChildren(data.default(searchParams))
 	})
 }
 

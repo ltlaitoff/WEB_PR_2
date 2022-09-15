@@ -4,7 +4,7 @@ import { createElement } from 'helpers'
 import './Card.scss'
 import { route } from 'router'
 
-const Card = ({ name, stars, image, minPrice, time, type }) => {
+const Card = ({ id, name, stars, image, minPrice, time, type }) => {
 	const StarElement = LoadIcon('star', 'card--star')
 
 	const formattedPrice = `Від ${minPrice} ₴`
@@ -72,7 +72,7 @@ const Card = ({ name, stars, image, minPrice, time, type }) => {
 		]
 	})
 
-	card.addEventListener('click', () => route('/restaurant'))
+	card.addEventListener('click', () => route('/restaurant', [{ id: id }]))
 
 	return card
 }
