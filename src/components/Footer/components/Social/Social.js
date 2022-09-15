@@ -4,13 +4,12 @@ import { socialData } from './data'
 
 const Social = () => {
 	const listItems = socialData.map(info => {
-		const img = info.icon
-		img.classList.add('social--item-icon')
+		info.icon.classList.add('social--item-icon')
 
 		const link = createElement('a', {
 			className: 'social--item-link',
 			href: info.href,
-			child: img
+			child: info.icon
 		})
 
 		const item = createElement('li', {

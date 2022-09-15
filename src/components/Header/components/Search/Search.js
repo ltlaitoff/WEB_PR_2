@@ -1,10 +1,9 @@
-import HomeIcon from 'favicons/home.svg'
-import { createElement, htmlStringToElement } from 'helpers'
+import LoadIcon from 'components/LoadIcon'
+import { createElement } from 'helpers'
 import './Search.scss'
 
 const Search = () => {
-	const icon = htmlStringToElement(HomeIcon)
-	icon.classList.add('search--icon')
+	const icon = LoadIcon('home', 'search--icon')
 
 	const input = createElement('input', {
 		className: 'search--input',

@@ -1,6 +1,6 @@
 import { getRestaurants } from 'api'
-import { createElement, htmlStringToElement } from 'helpers'
-import Search from 'assets/images/favicons/search.svg'
+import { createElement } from 'helpers'
+import LoadIcon from 'components/LoadIcon'
 
 import { Card } from '..'
 
@@ -10,8 +10,7 @@ const Cards = () => {
 	const restaurants = [...getRestaurants()]
 	// TODO: Change it to import from async and rerender
 
-	const searchIcon = htmlStringToElement(Search)
-	searchIcon.classList.add('cards--filter-icon')
+	const searchIcon = LoadIcon('search', 'cards--filter-icon')
 
 	return createElement('div', {
 		className: 'cards',

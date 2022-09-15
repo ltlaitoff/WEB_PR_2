@@ -1,4 +1,5 @@
-import { createElement, htmlStringToElement } from 'helpers'
+import { createElement } from 'helpers'
+import LoadIcon from 'components/LoadIcon'
 
 const ButtonWithIconAndText = ({
 	buttonClass,
@@ -7,8 +8,7 @@ const ButtonWithIconAndText = ({
 	text,
 	textClass = ''
 }) => {
-	const iconElement = htmlStringToElement(icon)
-	iconElement.classList.add(...iconClasses)
+	const iconElement = LoadIcon(icon, ...iconClasses)
 
 	const textElement = createElement('div', {
 		textContent: text,

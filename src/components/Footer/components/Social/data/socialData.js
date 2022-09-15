@@ -1,25 +1,22 @@
-import InstagramIcon from 'favicons/instagram.svg'
-import TelegramIcon from 'favicons/telegram.svg'
-import FacebookIcon from 'favicons/facebook.svg'
-import { htmlStringToElement } from 'helpers'
+import LoadIcon from 'components/LoadIcon'
 
 export default [
 	{
 		id: 0,
 		name: 'Instagram',
-		icon: htmlStringToElement(InstagramIcon),
+		icon: LoadIcon('instagram'),
 		href: null
 	},
 	{
 		id: 1,
 		name: 'Telegram',
-		icon: htmlStringToElement(TelegramIcon),
+		icon: LoadIcon('telegram'),
 		href: null
 	},
 	{
 		id: 2,
 		name: 'Facebook',
-		icon: htmlStringToElement(FacebookIcon),
+		icon: LoadIcon('facebook'),
 		href: null
 	}
 ]

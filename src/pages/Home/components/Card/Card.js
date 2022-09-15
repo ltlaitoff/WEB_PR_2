@@ -1,12 +1,11 @@
-import { createElement, htmlStringToElement } from 'helpers'
-import Star from 'assets/images/favicons/star.svg'
+import LoadIcon from 'components/LoadIcon'
+import { createElement } from 'helpers'
 
 import './Card.scss'
-import { route } from '../../../../router/router'
+import { route } from 'router'
 
 const Card = ({ name, stars, image, minPrice, time, type }) => {
-	const StarElement = htmlStringToElement(Star)
-	StarElement.classList.add('card--star')
+	const StarElement = LoadIcon('star', 'card--star')
 
 	const formattedPrice = `Від ${minPrice} ₴`
 	const formattedTime = `${time} хв.`

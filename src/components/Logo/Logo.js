@@ -1,11 +1,11 @@
-import LogoIcon from 'favicons/logo.svg'
-import { createElement, htmlStringToElement } from 'helpers'
+import LoadIcon from 'components/LoadIcon'
+import { createElement } from 'helpers'
 import './Logo.scss'
-import { route } from '../../router/router'
+
+import { route } from 'router'
 
 const Logo = () => {
-	const icon = htmlStringToElement(LogoIcon)
-	icon.classList.add('logo--image')
+	const icon = LoadIcon('logo', 'logo--image')
 
 	const title = createElement('h1', {
 		className: 'logo--text',

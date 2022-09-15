@@ -1,18 +1,15 @@
-import './RestaurantHeader.scss'
+import LoadIcon from 'components/LoadIcon'
 import { createElement } from 'helpers'
-import Star from 'assets/images/favicons/star.svg'
-import { htmlStringToElement } from '../../../../helpers/htmlStringToElement'
+
+import './RestaurantHeader.scss'
 
 const RestaurantHeader = () => {
+	const StarElement = LoadIcon('star', 'card--star')
+
 	const stars = 4.5
 	const minPrice = 40
 	const type = 'Піцца'
-
-	const StarElement = htmlStringToElement(Star)
-	StarElement.classList.add('card--star')
-
 	const title = 'Тануки'
-
 	const formattedPrice = `Від ${minPrice} ₴`
 
 	return createElement('div', {
