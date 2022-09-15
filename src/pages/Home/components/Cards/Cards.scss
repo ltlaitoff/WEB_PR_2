@@ -5,7 +5,13 @@
 
 	&--head-wrapper {
 		display: flex;
+		flex-wrap: wrap;
 		justify-content: space-between;
+
+		@media screen and (max-width: 550px) {
+			justify-content: center;
+			row-gap: 10px;
+		}
 	}
 
 	&--title {
@@ -57,11 +63,18 @@
 
 		display: flex;
 		flex-wrap: wrap;
+		column-gap: 10px;
+
 		justify-content: space-between;
+
+		@media screen and (max-width: 1200px) {
+			justify-content: center;
+		}
+
 		row-gap: 30px;
 
-		& > * {
-			flex-basis: 33%;
-		}
+		// & > * {
+		// 	flex-basis: 33%;
+		// }
 	}
 }
