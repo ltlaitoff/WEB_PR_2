@@ -40,7 +40,7 @@ const Cards = () => {
 				className: 'cards--wrapper',
 				childs: restaurants.map(info => {
 					if (!info.image.includes('.jpg')) {
-						info.image = require(`assets/images/${info.image}.jpg`)
+						info.image = require(`assets/images/restaurants/${info.image}.jpg`)
 					}
 
 					return Card(info)
