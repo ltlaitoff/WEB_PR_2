@@ -1,7 +1,8 @@
 import DATA from './data.json'
+import { loadAPIImagesRestaurants } from 'helpers'
 
 const getRestaurants = () => {
-	return DATA.restaurants
+	return loadAPIImagesRestaurants(DATA.restaurants)
 }
 
 const getRestaurantDishes = () => {

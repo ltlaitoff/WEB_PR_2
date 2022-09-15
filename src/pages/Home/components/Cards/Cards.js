@@ -38,13 +38,7 @@ const Cards = () => {
 			}),
 			createElement('div', {
 				className: 'cards--wrapper',
-				childs: restaurants.map(info => {
-					if (!info.image.includes('.jpg')) {
-						info.image = require(`assets/images/restaurants/${info.image}.jpg`)
-					}
-
-					return Card(info)
-				})
+				childs: restaurants.map(info => Card(info))
 			})
 		]
 	})
