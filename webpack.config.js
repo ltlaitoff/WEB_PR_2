@@ -17,7 +17,8 @@ module.exports = {
 			favicons: path.resolve(__dirname, 'src/assets/images/favicons'),
 			pages: path.resolve(__dirname, 'src/pages'),
 			api: path.resolve(__dirname, 'src/api/'),
-			router: path.resolve(__dirname, 'src/router/')
+			router: path.resolve(__dirname, 'src/router/'),
+			store: path.resolve(__dirname, 'src/store/')
 		}
 	},
 

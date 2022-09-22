@@ -1,8 +1,15 @@
 import './ShoppingCartHeader.scss'
-import { createElement } from 'helpers'
+import { createElement, removeShoppingCart } from 'helpers'
 import LoadIcon from 'components/LoadIcon'
 
 const ShoppingCartHeader = () => {
+	const button = createElement('button', {
+		className: 'shopping-cart--header-cross-button',
+		child: LoadIcon('cross', 'shopping-cart--header-cross')
+	})
+
+	button.addEventListener('click', () => removeShoppingCart())
+
 	const header = createElement('div', {
 		className: 'shopping-cart--header',
 		childs: [
@@ -10,7 +17,7 @@ const ShoppingCartHeader = () => {
 				className: 'shopping-cart--header-title',
 				textContent: 'Корзина'
 			}),
-			LoadIcon('cross', 'shopping-cart--header-cross')
+			button
 		]
 	})
 

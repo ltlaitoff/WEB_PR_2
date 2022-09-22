@@ -7,9 +7,9 @@ import {
 export default (store = {}, action) => {
 	switch (action.type) {
 		case ADD_CARD_TO_STORE: {
-			const shoppingCart = store.shoppingCart.push(action.payload)
+			store.shoppingCart.push(action.payload)
 
-			return { ...store, shoppingCart: shoppingCart }
+			return { ...store, shoppingCart: store.shoppingCart }
 		}
 
 		case REMOVE_CARD_FROM_STORE: {

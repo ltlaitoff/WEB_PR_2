@@ -2,7 +2,7 @@ import Logo from 'components/Logo'
 import Search from './components/Search'
 import ButtonWithIconAndText from './components/ButtonWithIconAndText'
 
-import { createElement } from 'helpers'
+import { createElement, openShoppingCart } from 'helpers'
 import './Header.scss'
 
 const Header = () => {
@@ -19,6 +19,8 @@ const Header = () => {
 		icon: 'shopping-cart',
 		text: 'Корзина'
 	})
+
+	shoppingCartButton.addEventListener('click', () => openShoppingCart())
 
 	const buttonsWrapper = createElement('div', {
 		className: 'header--buttons',
