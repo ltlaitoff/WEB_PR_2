@@ -74,6 +74,13 @@ const Card = ({ id, name, stars, image, minPrice, time, type }) => {
 
 	card.addEventListener('click', () => route('/restaurant', [{ id: id }]))
 
+	card.style.setProperty('--animate-delay', `.${id / 2}s`)
+	card.classList.add(
+		'animate__animated',
+		'animate__fadeInUp'
+		// 'animate__delay-1s'
+	)
+
 	return card
 }
 

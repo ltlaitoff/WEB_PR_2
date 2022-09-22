@@ -14,7 +14,7 @@ const Promo = () => {
 	})
 
 	const promo = createElement('div', {
-		className: 'promo',
+		className: 'promo animate__animated animate__pulse',
 		childs: [title, text]
 	})
 
