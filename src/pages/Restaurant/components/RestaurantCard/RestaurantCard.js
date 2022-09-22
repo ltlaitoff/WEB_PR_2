@@ -1,10 +1,10 @@
 import './RestaurantCard.scss'
 import { createElement } from 'helpers'
 
-const RestaurantCard = ({ title, descr, image, price }) => {
+const RestaurantCard = ({ id, title, descr, image, price }) => {
 	const formattedPrice = `${price} ₴`
 
-	return createElement('div', {
+	const card = createElement('div', {
 		className: 'restaurant-card',
 		childs: [
 			createElement('div', {
@@ -39,6 +39,11 @@ const RestaurantCard = ({ title, descr, image, price }) => {
 			})
 		]
 	})
+
+	card.style.setProperty('--animate-delay', `.${id / 2}s`)
+	card.classList.add('animate__animated', 'animate__fadeInUp')
+
+	return card
 }
 
 export default RestaurantCard
