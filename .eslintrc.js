@@ -13,7 +13,7 @@ module.exports = {
 	},
 	rules: {
 		'no-console': 'off',
-		indent: ['error', 'tab'],
+		indent: ['error', 'tab', { SwitchCase: 1 }],
 		quotes: ['error', 'single']
 	},
 	settings: {
