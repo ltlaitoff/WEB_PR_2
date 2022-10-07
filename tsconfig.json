@@ -26,6 +26,6 @@
 		"compilerOptions": {
 			"module": "CommonJS"
 		}
-	},
-	"files": ["globals.d.ts"]
+	}
+	// "files": ["globals.d.ts"]
 }
