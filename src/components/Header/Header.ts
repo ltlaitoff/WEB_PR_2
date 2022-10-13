@@ -1,12 +1,21 @@
 import Search from './components/Search'
 import './Header.scss'
-import { Component, createText, createElement, createComponent } from 'lib'
+import { Component, createElement, createComponent } from 'lib'
 import Logo from '../Logo'
 import HeaderButton from './components/HeaderButton'
 import User from '../../assets/images/favicons/user.svg'
 import ShoppingCart from '../../assets/images/favicons/shopping-cart.svg'
 
-class Header extends Component<{}, {}> {
+interface HeaderProps {
+	logged: boolean
+	onSignIn: () => void
+}
+
+class Header extends Component<HeaderProps, {}> {
+	onSignIn() {
+		this.props.onSignIn()
+	}
+
 	render() {
 		return createElement(
 			'header',
@@ -22,10 +31,15 @@ class Header extends Component<{}, {}> {
 				createComponent(HeaderButton, {
 					key: 'header-button-sign-in',
 					id: 0,
-					buttonClass: 'header--button-signin',
+					buttonClass: `header--button-signin ${
+						this.props.logged && 'header--button-signin-active'
+					}`,
 					icon: User,
 					iconClass: 'header--button-signin-icon',
-					text: 'Війти'
+					text: this.props.logged === false ? 'Війти' : 'Війшли',
+
+					onclick:
+						this.props.logged === false ? () => this.onSignIn() : undefined
 				}),
 				createComponent(HeaderButton, {
 					key: 'header-button-cart',

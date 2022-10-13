@@ -7,61 +7,33 @@ import LoginModalButton from './LoginModalButton'
 const KEY = 'login-modal'
 
 interface LoginModalProps {
-	show: boolean
 	onClose: () => void
 	onSubmit: ({ login, password }: { login: string; password: string }) => void
 }
 
-interface LoginModalState {
-	loginText: string
-	loginError: boolean
-	passwordText: string
-	passwordError: boolean
-}
-
-class LoginModal extends Component<LoginModalProps, LoginModalState> {
-	state: LoginModalState = {
-		loginText: '',
-		loginError: false,
-		passwordText: '',
-		passwordError: false
-	}
-
+class LoginModal extends Component<LoginModalProps, {}> {
 	loginText = ''
 	loginError = false
-	// passwordText = ''
-	// passwordError = false
+	passwordText = ''
+	passwordError = false
 
 	currentTargetType = ''
 
-	onLoginError(error: boolean) {
-		// this.setState(state => ({
-		// 	...state,
-		// 	loginError: error
-		// }))
-	}
-
 	onPasswordError(error: boolean) {
-		// this.setState(state => ({
-		// 	...state,
-		// 	passwordError: error
-		// }))
-	}
-
-	onLoginSubmit(text: string) {
-		console.log(text, this.state)
-
 		this.setState(state => ({
 			...state,
-			loginText: text
+			passwordError: error
 		}))
 	}
 
-	onPasswordSubmit(text: string) {
-		this.setState(state => ({
-			...state,
-			passwordText: text
-		}))
+	onLoginChange(text: string, error: boolean) {
+		this.loginText = text
+		this.loginError = error
+	}
+
+	onPasswordChange(text: string, error: boolean) {
+		this.passwordText = text
+		this.passwordError = error
 	}
 
 	closeModal() {
@@ -71,43 +43,40 @@ class LoginModal extends Component<LoginModalProps, LoginModalState> {
 	submitModal(e: Event) {
 		e.preventDefault()
 
-		console.log(e)
-
-		console.log(
-			// @ts-expect-error
-			Array.from(e.target.querySelectorAll('input')).reduce(
-				(acc: object, el) => {
-					console.log(el)
-					return {
-						...acc,
-						// @ts-expect-error
-						[el.name]: el.value
-					}
-				},
-				{}
-			)
-		)
-
-		if (this.state.loginText === '' || this.state.passwordText === '') {
+		if (this.loginText === '' || this.passwordText === '') {
 			alert('Заповніть всі поля')
 			return
 		}
 
 		this.props.onSubmit({
-			login: this.state.loginText,
-			password: this.state.passwordText
+			login: this.loginText,
+			password: this.passwordText
 		})
 	}
 
-	render() {
-		console.log(this.state)
-
-		if (this.props.show === false) {
-			return createElement('div', {
-				key: `${KEY}`
-			})
+	onOutsideClick(e: Event) {
+		if ((e.target as HTMLDivElement).className === `${KEY}-all`) {
+			this.props.onClose()
 		}
+	}
 
+	public componentDidMount(): void {
+		document.body.classList.add('stop-scrolling')
+		const x = window.scrollX
+		const y = window.scrollY
+		window.addEventListener('touchmove', e => e.preventDefault(), {
+			passive: false
+		})
+		// window.addEventListener('scroll', () => {
+		// 	window.scrollTo(x, y)
+		// })
+	}
+
+	public componentWillUnmount(): void {
+		document.body.classList.remove('stop-scrolling')
+	}
+
+	render() {
 		return createElement(
 			'div',
 			{
@@ -117,7 +86,8 @@ class LoginModal extends Component<LoginModalProps, LoginModalState> {
 				'div',
 				{
 					key: `${KEY}-all`,
-					className: `${KEY}-all`
+					className: `${KEY}-all`,
+					onclick: (e: Event) => this.onOutsideClick(e)
 				},
 				createElement(
 					'div',
@@ -159,9 +129,11 @@ class LoginModal extends Component<LoginModalProps, LoginModalState> {
 								key: 'login-login-buton',
 								type: 'text',
 								name: 'login',
-								value: this.state.loginText,
-								onError: (error: boolean) => this.onLoginError(error),
-								onSubmit: (text: string) => this.onLoginSubmit(text)
+								value: this.loginText,
+								error: this.loginError,
+
+								onChange: (text: string, error: boolean) =>
+									this.onLoginChange(text, error)
 							})
 						),
 						createElement(
@@ -172,13 +144,15 @@ class LoginModal extends Component<LoginModalProps, LoginModalState> {
 							},
 							createText('Password'),
 							createComponent(LoginModalButton, {
-								KEY: KEY,
+								KEY: `${KEY}`,
 								key: 'login-password-buton',
 								type: 'password',
 								name: 'password',
-								value: this.state.passwordText,
-								onError: (error: boolean) => this.onPasswordError(error),
-								onSubmit: (text: string) => this.onPasswordSubmit(text)
+								value: this.passwordText,
+								error: this.passwordError,
+
+								onChange: (text: string, error: boolean) =>
+									this.onPasswordChange(text, error)
 							})
 						),
 						createElement(
