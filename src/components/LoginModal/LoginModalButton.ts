@@ -5,8 +5,8 @@ interface LoginModalButtonProps {
 	type: string
 	value: string
 	name: string
-	onError: (error: boolean) => void
-	onSubmit: (text: string) => void
+	error: boolean
+	onChange: (text: string, error: boolean) => void
 }
 
 interface LoginModalButtonState {
@@ -20,22 +20,22 @@ class LoginModalButton extends Component<
 > {
 	state: LoginModalButtonState = { text: '', error: false }
 
-	// constructor({ KEY, type, value, onError, onSubmit }: LoginModalButtonProps) {
-	// 	super()
-	// 	this.state = { text: value, error: false }
-	// }
-
 	public componentDidMount(): void {
-		this.setState(state => ({ ...state, text: this.props.value }))
+		this.setState(state => ({
+			...state,
+			text: this.props.value,
+			error: this.props.error
+		}))
 	}
 
 	onChange(e: InputEvent) {
 		const text = (e.target as HTMLInputElement).value
 		const error = text.length === 0
 
-		if (this.state.error !== error) {
-			this.props.onError(error)
-		}
+		// if (this.state.error !== error) {
+		// this.props.onChange(text, error)
+		// }
+		this.props.onChange(text, error)
 
 		this.setState(() => ({
 			text: text,
@@ -44,22 +44,16 @@ class LoginModalButton extends Component<
 	}
 
 	onBlur() {
-		console.log(this.state.text)
-		this.props.onSubmit(this.state.text)
+		this.props.onChange(this.state.text, this.state.error)
 	}
 
 	onKeyDown(e: KeyboardEvent) {
-		console.log(e.code)
-
 		if (e.code === 'enter') {
-			this.props.onSubmit(this.state.text)
+			this.props.onChange(this.state.text, this.state.error)
 		}
 	}
 
 	render() {
-		// console.log(this.state)
-
-		console.log('rerender', this.state)
 		return createElement('input', {
 			key: `${this.props.KEY}-form-input`,
 			type: this.props.type,

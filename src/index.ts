@@ -22,12 +22,19 @@ interface AppState {
 }
 
 class App extends Component<{}, AppState> {
-	state: AppState = { logged: false, logginModalShow: true }
+	state: AppState = { logged: false, logginModalShow: false }
 
 	setLogged(value: boolean) {
 		this.setState(state => ({
 			...state,
 			logged: value
+		}))
+	}
+
+	loginModalOpen() {
+		this.setState(state => ({
+			...state,
+			logginModalShow: true
 		}))
 	}
 
@@ -41,6 +48,8 @@ class App extends Component<{}, AppState> {
 	onSubmit({ login, password }: { login: string; password: string }) {
 		if (login === 'user' && password === '123') {
 			alert('Ви успішно ввійшли')
+			this.setLogged(true)
+			this.loginModalClose()
 			return
 		}
 
@@ -51,17 +60,23 @@ class App extends Component<{}, AppState> {
 		return createElement(
 			'main',
 			{ key: 'main' },
-			createComponent(Header, { key: 'header' }),
+			createComponent(Header, {
+				key: 'header',
+				logged: this.state.logged,
+				onSignIn: () => {
+					this.loginModalOpen()
+				}
+			}),
 			createElement('footer', { key: 'footer' }),
 			createElement('div', { key: 'items', innerHTML: HOME_PAGE().outerHTML }),
-			createComponent(LoginModal, {
-				key: 'login-modal',
-				show: this.state.logginModalShow,
-				onClose: () => this.loginModalClose(),
-				onSubmit: ({ login, password }) => this.onSubmit({ login, password })
-			})
+			this.state.logginModalShow &&
+				createComponent(LoginModal, {
+					key: 'login-modal',
+					onClose: () => this.loginModalClose(),
+					onSubmit: ({ login, password }) => this.onSubmit({ login, password })
+				})
 		)
 	}
 }
 
-renderDOM('body', createComponent(App, { key: 'app' }))
+renderDOM('app', createComponent(App, { key: 'app' }))

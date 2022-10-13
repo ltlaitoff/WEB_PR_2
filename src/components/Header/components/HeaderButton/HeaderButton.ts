@@ -11,13 +11,20 @@ interface HeaderButtonProps {
 	text: string
 }
 
+interface HeaderButtonProps {
+	onclick?: () => void
+}
+
 class HeaderButton extends Component<HeaderButtonProps, {}> {
 	render() {
 		return createElement(
 			'button',
 			{
 				key: `headerButton-${this.props.id}`,
-				className: `header--button ${this.props.buttonClass}`
+				className: `header--button ${this.props.buttonClass}`,
+				onclick: () => {
+					this.props.onclick?.()
+				}
 			},
 			createElement('div', {
 				key: `headerButtonIcon-${this.props.id}`,
