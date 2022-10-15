@@ -6,15 +6,15 @@ import {
 	Component
 } from 'lib'
 
-import { router } from './router'
+import { route, router } from './router'
 import './style/style.scss'
 
 // router(main)
 
 import Header from './components/Header'
 
-import HOME_PAGE from './pages/Home'
 import LoginModal from './components/LoginModal'
+import { setLoggedValue, setStore } from './store'
 
 interface AppState {
 	logged: boolean
@@ -48,12 +48,23 @@ class App extends Component<{}, AppState> {
 	onSubmit({ login, password }: { login: string; password: string }) {
 		if (login === 'user' && password === '123') {
 			alert('Ви успішно ввійшли')
+
+			setStore(setLoggedValue(true))
+
 			this.setLogged(true)
 			this.loginModalClose()
 			return
 		}
 
 		alert('Помилка в логіні або паролі')
+	}
+
+	componentDidMount() {
+		router({
+			onSignIn: () => {
+				this.loginModalOpen()
+			}
+		})
 	}
 
 	render() {
@@ -67,8 +78,11 @@ class App extends Component<{}, AppState> {
 					this.loginModalOpen()
 				}
 			}),
+			createElement('div', {
+				key: 'items',
+				id: 'router-view'
+			}),
 			createElement('footer', { key: 'footer' }),
-			createElement('div', { key: 'items', innerHTML: HOME_PAGE().outerHTML }),
 			this.state.logginModalShow &&
 				createComponent(LoginModal, {
 					key: 'login-modal',
@@ -80,3 +94,5 @@ class App extends Component<{}, AppState> {
 }
 
 renderDOM('app', createComponent(App, { key: 'app' }))
+
+// router(document.querySelector('#router-view'))
