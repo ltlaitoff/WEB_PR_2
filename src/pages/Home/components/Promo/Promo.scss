@@ -3,36 +3,43 @@
 $text-color: #302c34;
 
 .promo {
-	padding: 70px;
-	width: 100%;
-	// min-height: 300px;
+	--card-bg: white;
 
-	background-color: var(--color-gold-2);
-	border-radius: 10px;
+	&--slide {
+		min-height: 300px;
+		padding: 70px;
+		width: 100%;
 
-	color: $text-color;
-	filter: drop-shadow(0px 7px 12px rgba(158, 158, 163, 0.1));
+		transition: background-color 1s;
+		background-color: var(--card-bg);
+		border-radius: 10px;
 
-	background-image: url('pages/Home/assets/images/promo.png');
+		color: $text-color;
+		filter: drop-shadow(0px 7px 12px rgba(158, 158, 163, 0.1));
 
-	@media screen and (max-width: 1000px) {
-		padding: 60px;
-	}
+		background-repeat: no-repeat;
+		background-position: right top;
+		background-size: auto 100%;
 
-	@media screen and (max-width: 900px) {
-		padding: 50px;
-	}
+		@media screen and (max-width: 1000px) {
+			padding: 60px;
+		}
 
-	@media screen and (max-width: 750px) {
-		padding: 40px;
-	}
+		@media screen and (max-width: 900px) {
+			padding: 50px;
+		}
 
-	@media screen and (max-width: 600px) {
-		padding: 25px;
-	}
+		@media screen and (max-width: 750px) {
+			padding: 40px;
+		}
 
-	@media screen and (max-width: 500px) {
-		display: none;
+		@media screen and (max-width: 600px) {
+			padding: 25px;
+		}
+
+		@media screen and (max-width: 500px) {
+			display: none;
+		}
 	}
 
 	&--title {
