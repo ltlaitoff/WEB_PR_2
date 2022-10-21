@@ -45,6 +45,7 @@ const getRoutesPathList = () => {
 }
 
 const getRoutesTemplageByPath = path => {
+	console.log(path)
 	path = path.split('&')[0]
 
 	if (checkPathOnErrors(path, false)) {
@@ -53,7 +54,7 @@ const getRoutesTemplageByPath = path => {
 
 	return ROUTES.filter(route => {
 		if (route.path === path) return route
-	})[0].template
+	})[0]
 }
 
 const route = (path, params = []) => {
@@ -85,9 +86,12 @@ function router(props) {
 	const paramsStr = hash.split('&')[1]
 	const searchParams = new URLSearchParams(paramsStr)
 
-	page.then(data => {
-		console.log(data.default.name)
-		if (data.default.name === 'Home') {
+	if (page.path === '/') {
+		page.template.then(data => {
+			console.log(data.default.name)
+			console.log(data.default)
+			console.log(data)
+
 			renderDOM(
 				'router-view',
 
@@ -97,10 +101,13 @@ function router(props) {
 					...searchParams
 				})
 			)
-			return
-		}
+		})
 
-		const routerView = document.querySelector('.home-page')
+		return
+	}
+
+	page.template.then(data => {
+		const routerView = document.querySelector('#router-view')
 		routerView.replaceChildren(data.default(searchParams))
 	})
 }
