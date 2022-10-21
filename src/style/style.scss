@@ -1,6 +1,6 @@
 @use './ui';
-@import 'animate.css';
-// @use './imports';
+@use '../../node_modules/swiper/swiper.scss';
+@use '../../node_modules/animate.css/animate.css';
 
 *,
 *::before,
