@@ -2,7 +2,7 @@ import './RestaurantCard.scss'
 import { createElement, openShoppingCart } from 'helpers'
 import { getStore, setStore, addCardToStore } from 'store'
 
-const RestaurantCard = ({ id, title, descr, image, price }) => {
+const RestaurantCard = ({ id, name, description, image, price }) => {
 	const formattedPrice = `${price} ₴`
 
 	const buttonBuy = createElement('button', {
@@ -12,7 +12,7 @@ const RestaurantCard = ({ id, title, descr, image, price }) => {
 
 	buttonBuy.addEventListener('click', () => {
 		openShoppingCart()
-		setStore(addCardToStore({ id, title, price }))
+		setStore(addCardToStore({ id, name, price }))
 		console.log(getStore())
 	})
 
@@ -28,11 +28,11 @@ const RestaurantCard = ({ id, title, descr, image, price }) => {
 				childs: [
 					createElement('div', {
 						className: 'restaurant-card-body-title',
-						textContent: title
+						textContent: name
 					}),
 					createElement('div', {
 						className: 'restaurant-card-body-descr',
-						textContent: descr
+						textContent: description
 					}),
 					createElement('div', {
 						className: 'restaurant-card-body-wrapper',

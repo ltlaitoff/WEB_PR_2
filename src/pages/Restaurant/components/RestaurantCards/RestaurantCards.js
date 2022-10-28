@@ -4,17 +4,21 @@ import { RestaurantCard } from '..'
 
 import './RestaurantCards.scss'
 
-const RestaurantCards = id => {
-	const cardsInfo = getRestaurantDishes(id)
+const RestaurantCards = async (id, className) => {
+	const cardsInfo = await getRestaurantDishes(id)
 
 	const data = cardsInfo.map(item => {
-		return { ...item, image: require(`assets/images/${item.image}.jpg`) }
+		return { ...item, image: require(`assets/images/${item.image}`) }
 	})
 
-	return createElement('div', {
-		className: 'restaurant-cards',
-		childs: data.map(item => RestaurantCard(item))
-	})
+	const el = document.querySelector(`.${className}`)
+
+	el.append(
+		createElement('div', {
+			className: 'restaurant-cards',
+			childs: data.map(item => RestaurantCard(item))
+		})
+	)
 }
 
 export default RestaurantCards

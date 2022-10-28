@@ -27,10 +27,11 @@ class Home extends Component<HomeProps, HomeState> {
 		}
 
 		addWatcher(getLogged)
+
+		getLogged()
 	}
 
 	render() {
-		console.log(this.props)
 		return createElement(
 			'div',
 			{
@@ -40,7 +41,11 @@ class Home extends Component<HomeProps, HomeState> {
 			createComponent(Promo, { key: 'home-promo' }),
 			createComponent(Cards, {
 				key: 'home-cards',
-				onSignIn: () => this.props.onSignIn(),
+				onSignIn: this.props.onSignIn
+					? () => this.props.onSignIn()
+					: () => {
+							console.log('Home not onSignIn')
+					  },
 				logged: this.state.logged
 			})
 		)

@@ -4,6 +4,7 @@ $text-color: #302c34;
 
 .promo {
 	--card-bg: white;
+	z-index: -1;
 
 	&--slide {
 		min-height: 300px;

@@ -9,11 +9,13 @@ const Restaurant = params => {
 		route('/')
 	}
 
-	const cards = RestaurantCards(params.get('id'))
+	const products = params.get('products')
+
+	RestaurantHeader(products, 'restaurant')
+	RestaurantCards(products, 'restaurant')
 
 	return createElement('div', {
-		className: 'restaurant',
-		childs: [RestaurantHeader(), cards]
+		className: 'restaurant'
 	})
 }
 

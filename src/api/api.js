@@ -1,12 +1,18 @@
-import DATA from './data.json'
+import DATA from './data'
 import { loadAPIImagesRestaurants } from 'helpers'
 
-const getRestaurants = () => {
-	return loadAPIImagesRestaurants(DATA.restaurants)
+const getRestaurants = async () => {
+	return await loadAPIImagesRestaurants(DATA.restaurants)
 }
 
-const getRestaurantDishes = id => {
-	return DATA.restaurantsDishes[id]
+const getRestaurantByProducts = async products => {
+	return await DATA.restaurants.filter(
+		restaurant => restaurant.products === products
+	)[0]
 }
 
-export { getRestaurantDishes, getRestaurants }
+const getRestaurantDishes = async name => {
+	return await DATA.restaurantsDishes[name]
+}
+
+export { getRestaurantDishes, getRestaurants, getRestaurantByProducts }

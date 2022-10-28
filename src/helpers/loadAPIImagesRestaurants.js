@@ -3,7 +3,7 @@ const loadAPIImagesRestaurants = apiData => {
 		console.log(element)
 		return {
 			...element,
-			image: require(`assets/images/restaurants/${element.image}`)
+			image: require(`assets/images/${element.image}`)
 		}
 	})
 }

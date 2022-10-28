@@ -10,10 +10,11 @@ interface CardProps {
 	name: string
 	stars: number
 	image: string
-	minPrice: number
-	time: number
-	type: string
-	onCardClick: (id: number) => void
+	price: number
+	time_of_delivery: number
+	kitchen: string
+	products: string
+	onCardClick: (id: string) => void
 }
 
 class Card extends Component<CardProps, {}> {
@@ -26,15 +27,15 @@ class Card extends Component<CardProps, {}> {
 	}
 
 	render() {
-		const formattedPrice = `Від ${this.props.minPrice} ₴`
-		const formattedTime = `${this.props.time} хв.`
+		const formattedPrice = `Від ${this.props.price} ₴`
+		const formattedTime = `${this.props.time_of_delivery} хв.`
 
 		return createElement(
 			'a',
 			{
 				key: `card-a-${this.props.id}`,
 				className: `card card-${this.props.id} animate__animated animate__fadeInUp`,
-				onclick: () => this.props.onCardClick(this.props.id)
+				onclick: () => this.props.onCardClick(this.props.products)
 			},
 			createElement('div', {
 				key: 'card--image',
@@ -107,7 +108,7 @@ class Card extends Component<CardProps, {}> {
 						createElement('div', {
 							key: 'card--type',
 							className: 'card--type',
-							textContent: this.props.type
+							textContent: this.props.kitchen
 						})
 					)
 				)

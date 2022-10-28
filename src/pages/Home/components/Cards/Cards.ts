@@ -15,10 +15,10 @@ interface CardsProps {
 }
 
 class Cards extends Component<CardsProps, {}> {
-	// TODO: Change it to import from async and rerender
-	restaurants = [...getRestaurants()]
+	// @ts-expect-error test
+	restaurants = []
 
-	onCardClick(id: number) {
+	onCardClick(products: string) {
 		console.log(this.props)
 
 		if (this.props.logged === false) {
@@ -26,12 +26,16 @@ class Cards extends Component<CardsProps, {}> {
 			return
 		}
 
-		route('/restaurant', [{ id: id }])
+		route('/restaurant', [{ products: products }])
+	}
+
+	componentDidMount() {
+		getRestaurants().then(data => {
+			this.restaurants = data
+		})
 	}
 
 	render() {
-		console.log(this.props)
-
 		return createElement(
 			'div',
 			{
@@ -77,7 +81,7 @@ class Cards extends Component<CardsProps, {}> {
 				...this.restaurants.map(info =>
 					createComponent(Card, {
 						key: `card-${info.id}`,
-						onCardClick: (id: number) => this.onCardClick(id),
+						onCardClick: (products: string) => this.onCardClick(products),
 						...info
 					})
 				)

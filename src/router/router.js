@@ -84,16 +84,19 @@ function router(props) {
 	// console.log('%crouter.js line:79 object', 'color: #007acc;', object);
 
 	const paramsStr = hash.split('&')[1]
+	console.log(paramsStr)
 	const searchParams = new URLSearchParams(paramsStr)
 
 	if (page.path === '/') {
 		page.template.then(data => {
-			console.log(data.default.name)
-			console.log(data.default)
-			console.log(data)
+			const routerView = document.querySelector('#router-view')
+			const tmp = document.createElement('div')
+			tmp.id = 'tmp'
+
+			routerView.replaceChildren(tmp)
 
 			renderDOM(
-				'router-view',
+				'tmp',
 
 				createComponent(data.default, {
 					key: 'router-page',
@@ -106,6 +109,11 @@ function router(props) {
 		return
 	}
 
+	console.log(
+		'%crouter.js line:110 searchParams',
+		'color: #007acc;',
+		searchParams
+	)
 	page.template.then(data => {
 		const routerView = document.querySelector('#router-view')
 		routerView.replaceChildren(data.default(searchParams))
