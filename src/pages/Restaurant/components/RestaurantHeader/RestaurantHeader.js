@@ -3,10 +3,11 @@ import { createElement } from 'helpers'
 import { getRestaurantByProducts } from 'api'
 import './RestaurantHeader.scss'
 
-const RestaurantHeader = async (products, className) => {
+const RestaurantHeader = async (products, className, dataBase = null) => {
 	const StarElement = LoadIcon('star', 'card--star')
 
-	const DATA = await getRestaurantByProducts(products)
+	const DATA =
+		dataBase === null ? await getRestaurantByProducts(products) : dataBase
 
 	console.log('%cRestaurantHeader.js line:10 DATA', 'color: #007acc;', DATA)
 	const { stars, price, kitchen, name } = DATA

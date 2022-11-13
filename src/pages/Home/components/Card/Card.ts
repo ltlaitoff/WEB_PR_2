@@ -1,7 +1,6 @@
 // import LoadIcon from 'components/LoadIcon'
 
 import './Card.scss'
-import { route } from 'router'
 import { Component, createElement } from 'lib'
 import StarIcon from '../../../../assets/images/favicons/star.svg'
 

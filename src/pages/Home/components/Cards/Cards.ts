@@ -8,6 +8,7 @@ import './Cards.scss'
 import { Component, createElement } from 'lib'
 import { createComponent } from '../../../../../packages/reactiveLibrary/virtual_dom'
 import { route } from '../../../../router'
+import { KeyboardEvents } from 'swiper/types/modules/keyboard'
 
 interface CardsProps {
 	logged: boolean
@@ -27,6 +28,14 @@ class Cards extends Component<CardsProps, {}> {
 		}
 
 		route('/restaurant', [{ products: products }])
+	}
+
+	onFilerPressKey(e: KeyboardEvent) {
+		// @ts-expect-error TEST
+		if (e.key === 'Enter' && e.target.value !== '') {
+			// @ts-expect-error TEST
+			route('/restaurant', [{ search: e.target.value }])
+		}
 	}
 
 	componentDidMount() {
@@ -68,7 +77,8 @@ class Cards extends Component<CardsProps, {}> {
 						key: 'cards--filter-input',
 						className: 'cards--filter-input',
 						type: 'text',
-						placeholder: 'Пошук страв та ресторанів'
+						placeholder: 'Пошук страв та ресторанів',
+						onkeypress: (e: KeyboardEvent) => this.onFilerPressKey(e)
 					})
 				)
 			),

@@ -4,8 +4,9 @@ import { RestaurantCard } from '..'
 
 import './RestaurantCards.scss'
 
-const RestaurantCards = async (id, className) => {
-	const cardsInfo = await getRestaurantDishes(id)
+const RestaurantCards = async (id, className, cardsInfoBase = null) => {
+	const cardsInfo =
+		cardsInfoBase === null ? await getRestaurantDishes(id) : await cardsInfoBase
 
 	const data = cardsInfo.map(item => {
 		return { ...item, image: require(`assets/images/${item.image}`) }
