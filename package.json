@@ -35,6 +35,7 @@
 	"dependencies": {
 		"animate.css": "^4.1.1",
 		"eslint-import-resolver-typescript": "^3.5.1",
+		"firebase": "^9.15.0",
 		"swiper": "^8.4.4"
 	}
 }

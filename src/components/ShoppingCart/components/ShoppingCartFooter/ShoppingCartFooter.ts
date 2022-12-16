@@ -4,6 +4,7 @@ import './ShoppingCartFooter.scss'
 interface ShoppingCartFooterProps {
 	onClose: () => void
 	allPrice: () => number
+	save: () => void
 }
 
 class ShoppingCartFooter extends Component<ShoppingCartFooterProps, {}> {
@@ -31,7 +32,8 @@ class ShoppingCartFooter extends Component<ShoppingCartFooterProps, {}> {
 				createElement('button', {
 					key: 'shopping-cart--footer-create-order',
 					className: 'shopping-cart--footer-create-order',
-					textContent: 'Оформити замовлення'
+					textContent: 'Оформити замовлення',
+					onclick: () => this.props.save()
 				}),
 
 				createElement('button', {

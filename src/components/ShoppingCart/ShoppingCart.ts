@@ -9,6 +9,8 @@ import {
 
 import './ShoppingCart.scss'
 
+import { getDatabase, ref, set } from 'firebase/database'
+
 interface ShoppingCartProps {
 	onClose: () => void
 }
@@ -58,7 +60,15 @@ class ShoppingCart extends Component<ShoppingCartProps, {}> {
 					key: 'ShoppingCartFooter',
 					onClose: () => this.props.onClose(),
 					allPrice: () =>
-						cards.reduce((acc: any, cur: any) => acc + cur.price * cur.count, 0)
+						cards.reduce(
+							(acc: any, cur: any) => acc + cur.price * cur.count,
+							0
+						),
+					save: () => {
+						const db = getDatabase()
+						set(ref(db, `pr2/${new Date(Date.now()).toDateString()}`), cards)
+						this.props.onClose()
+					}
 				})
 			)
 		)

@@ -1,5 +1,8 @@
 /* eslint-disable indent*/
 /* eslint-disable no-mixed-spaces-and-tabs*/
+
+import { initializeApp } from 'firebase/app'
+import { getAnalytics } from 'firebase/analytics'
 import {
 	createComponent,
 	createElement,
@@ -130,3 +133,28 @@ class App extends Component<{}, AppState> {
 renderDOM('app', createComponent(App, { key: 'app' }))
 
 // router(document.querySelector('#router-view'))
+
+// Import the functions you need from the SDKs you need
+
+// import { initializeApp } from 'firebase/app'
+// import { getAnalytics } from 'firebase/analytics'
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+	apiKey: 'private',
+	authDomain: 'private',
+	databaseURL: 'private',
+	projectId: 'private',
+	storageBucket: 'private',
+	messagingSenderId: 'private',
+	appId: 'private',
+	measurementId: 'private'
+}
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig)
+const analytics = getAnalytics(app)
