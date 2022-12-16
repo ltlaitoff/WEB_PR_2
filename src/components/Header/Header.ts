@@ -9,6 +9,7 @@ import ShoppingCart from '../../assets/images/favicons/shopping-cart.svg'
 interface HeaderProps {
 	logged: boolean
 	onSignIn: () => void
+	onShoppingCartOpen: () => void
 }
 
 class Header extends Component<HeaderProps, {}> {
@@ -47,7 +48,9 @@ class Header extends Component<HeaderProps, {}> {
 					buttonClass: 'header--button-shopping-cart',
 					icon: ShoppingCart,
 					iconClass: 'header--button-shopping-cart-icon',
-					text: 'Корзина'
+					text: 'Корзина',
+
+					onclick: () => this.props.onShoppingCartOpen()
 				})
 			)
 		)

@@ -72,6 +72,10 @@
 				/* Gray/gray-1 */
 
 				color: #ffffff;
+
+				&-added {
+					background: var(--color-green-6);
+				}
 			}
 			&-price {
 				font-family: 'Roboto';

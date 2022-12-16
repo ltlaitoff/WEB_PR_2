@@ -1,8 +1,8 @@
 export const ADD_CARD_TO_STORE = 'ADD_CARD_TO_STORE'
 export const REMOVE_CARD_FROM_STORE = 'REMOVE_CARD_FROM_STORE'
 export const CHANGE_CARD_PRICE = 'CHANGE_CARD_PRICE'
-
 export const SET_LOGGED_VALUE = 'SET_LOGGED_VALUE'
+export const SET_CARD = 'SET_CARD'
 
 export const setLoggedValue = value => {
 	return {
@@ -29,5 +29,12 @@ export const changeCardPrice = cart => {
 	return {
 		type: CHANGE_CARD_PRICE,
 		payload: cart
+	}
+}
+
+export const setCard = card => {
+	return {
+		type: SET_CARD,
+		payload: card
 	}
 }

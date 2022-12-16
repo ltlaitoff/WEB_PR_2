@@ -1,3 +1,5 @@
+/* eslint-disable indent*/
+/* eslint-disable no-mixed-spaces-and-tabs*/
 import {
 	createComponent,
 	createElement,
@@ -15,20 +17,41 @@ import Header from './components/Header'
 
 import LoginModal from './components/LoginModal'
 import { setLoggedValue, setStore } from './store'
+import ShoppingCart from './components/ShoppingCart/ShoppingCart'
 
 interface AppState {
 	logged: boolean
 	logginModalShow: boolean
+	shoppingCartShow: boolean
 }
 
 class App extends Component<{}, AppState> {
-	state: AppState = { logged: false, logginModalShow: false }
+	state: AppState = {
+		logged: false,
+		logginModalShow: false,
+		shoppingCartShow: false
+	}
 
 	setLogged(value: boolean) {
 		this.setState(state => ({
 			...state,
 			logged: value
 		}))
+	}
+
+	setShoppingCartShow(value: boolean) {
+		this.setState(state => ({
+			...state,
+			shoppingCartShow: value
+		}))
+	}
+
+	shoppingCartOpen() {
+		this.setShoppingCartShow(true)
+	}
+
+	shoppingCartClose() {
+		this.setShoppingCartShow(false)
 	}
 
 	loginModalOpen() {
@@ -76,19 +99,30 @@ class App extends Component<{}, AppState> {
 				logged: this.state.logged,
 				onSignIn: () => {
 					this.loginModalOpen()
-				}
+				},
+				onShoppingCartOpen: () => this.shoppingCartOpen()
 			}),
 			createElement('div', {
 				key: 'items',
 				id: 'router-view'
 			}),
 			createElement('footer', { key: 'footer' }),
-			this.state.logginModalShow &&
-				createComponent(LoginModal, {
-					key: 'login-modal',
-					onClose: () => this.loginModalClose(),
-					onSubmit: ({ login, password }) => this.onSubmit({ login, password })
-				})
+
+			this.state.logginModalShow === true
+				? createComponent(LoginModal, {
+						key: 'login-modal',
+						onClose: () => this.loginModalClose(),
+						onSubmit: ({ login, password }) =>
+							this.onSubmit({ login, password })
+				  })
+				: createElement('div', { key: 'empty' }),
+
+			this.state.shoppingCartShow === true
+				? createComponent(ShoppingCart, {
+						key: 'shopping-cart-modal',
+						onClose: () => this.shoppingCartClose()
+				  })
+				: createElement('div', { key: 'empty' })
 		)
 	}
 }

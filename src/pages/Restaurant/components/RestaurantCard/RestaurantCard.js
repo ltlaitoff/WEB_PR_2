@@ -1,6 +1,7 @@
 import './RestaurantCard.scss'
 import { createElement, openShoppingCart } from 'helpers'
-import { getStore, setStore, addCardToStore } from 'store'
+import { getStore, setStore, addCardToStore, checkCartInStore } from 'store'
+import { removeCardFromStore } from '../../../../store/actions'
 
 const RestaurantCard = ({ id, name, description, image, price }) => {
 	const formattedPrice = `${price} ₴`
@@ -10,10 +11,22 @@ const RestaurantCard = ({ id, name, description, image, price }) => {
 		textContent: 'Купити'
 	})
 
-	buttonBuy.addEventListener('click', () => {
-		openShoppingCart()
-		setStore(addCardToStore({ id, name, price }))
-		console.log(getStore())
+	if (checkCartInStore(id) !== undefined) {
+		buttonBuy.classList.add('restaurant-card-body-wrapper-button-added')
+		buttonBuy.textContent = 'Куплено'
+	}
+
+	buttonBuy.addEventListener('click', e => {
+		if (checkCartInStore(id) === undefined) {
+			setStore(addCardToStore({ id, name, price }))
+			e.target.classList.add('restaurant-card-body-wrapper-button-added')
+			e.target.textContent = 'Куплено'
+			return
+		}
+
+		setStore(removeCardFromStore({ id, name, price }))
+		e.target.classList.remove('restaurant-card-body-wrapper-button-added')
+		e.target.textContent = 'Купити'
 	})
 
 	const card = createElement('div', {
